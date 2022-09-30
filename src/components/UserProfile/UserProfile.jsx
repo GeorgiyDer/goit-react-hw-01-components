@@ -1,4 +1,5 @@
 import css from "components/UserProfile/UserProfile.module.css";
+import PropTypes from 'prop-types';
 
 export const UserProfile = ({ username, tag, location, avatar, followers, views, likes }) => {    
     return (
@@ -10,7 +11,7 @@ export const UserProfile = ({ username, tag, location, avatar, followers, views,
                     className={css.avatar}
                 />
                 <p className={css.username}>{username}</p>
-                <p className="tag">{tag}</p>
+                <p className="tag">@{tag}</p>
                 <p className="location">{location}</p>
             </div>
             <ul className={css.stats}>
@@ -30,3 +31,13 @@ export const UserProfile = ({ username, tag, location, avatar, followers, views,
         </div>
     );
 }
+
+UserProfile.propTypes = {
+    username: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+};
