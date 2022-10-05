@@ -1,27 +1,32 @@
-import css from 'components/Statistics/Statistics.module.css'
+import { StyledStatics, StyledTitle, StyledStatsList, StyledStatsItem } from 'components/Statistics/Statistics.styled';
 import PropTypes from 'prop-types';
 
 export const Statistics = ({title, stats}) => {
     return (
-    <section className={css.statistics}>
-        {title && <h2 className={css.title}>{title}</h2>}
-        <ul className={css.statList}>
+    <StyledStatics>
+        {title && <StyledTitle>{title}</StyledTitle>}
+        <StyledStatsList>
             {stats.map(stat => (
-                <li className={css.item} key={stat.id}>
-                    <span className={css.label}>{stat.label}</span>
-                    <span className={css.percentage}>{stat.percentage}%</span>
-                </li>
+                <StyledStatsItem key={stat.id}>
+                    <span>{stat.label}</span>
+                    <span>{stat.percentage}%</span>
+                </StyledStatsItem>
             ))
             }
-        </ul>
-    </section>
+        </StyledStatsList>
+    </StyledStatics>
 )
 }
 
 Statistics.propTypes = {
-    stats: PropTypes.arrayOf().isRequired
+    stats: PropTypes.arrayOf(
+        PropTypes.exact({
+            id: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            percentage: PropTypes.number.isRequired,
+        })
+    ),
+    title: PropTypes.string,
 };
-// function getRandomHexColor(event) {
-//   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
-// }
+

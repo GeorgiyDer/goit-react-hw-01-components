@@ -1,34 +1,34 @@
-import css from "components/UserProfile/UserProfile.module.css";
+import { StyledProfileDiv, StyledDescrDiv, StyledImg, StyledName, StyledStatsList, StyledStatsItem, StyledQuantitySpan } from 'components/UserProfile/UserProfile.styled'
 import PropTypes from 'prop-types';
 
 export const UserProfile = ({ username, tag, location, avatar, followers, views, likes }) => {    
     return (
-        <div className={css.profile}>
-            <div className={css.description}>
-                <img
+        <StyledProfileDiv>
+            <StyledDescrDiv>
+                <StyledImg
                     src={avatar}
                     alt="User avatar"
-                    className={css.avatar}
+                    
                 />
-                <p className={css.username}>{username}</p>
-                <p className="tag">@{tag}</p>
-                <p className="location">{location}</p>
-            </div>
-            <ul className={css.stats}>
-                <li className={css.statList}>
-                    <span className="label">Followers</span>
-                    <span className={css.listQuantity}>{followers}</span>
-                </li>
-                <li className={css.statList}>
-                    <span className="label">Views</span>
-                    <span className={css.listQuantity}>{views}</span>
-                </li>
-                <li className={css.statList}>
-                    <span className="label">Likes</span>
-                    <span className={css.listQuantity}>{likes}</span>
-                </li>
-            </ul>
-        </div>
+                <StyledName>{username}</StyledName>
+                <p>@{tag}</p>
+                <p>{location}</p>
+            </StyledDescrDiv>
+            <StyledStatsList>
+                <StyledStatsItem>
+                    <span>Followers</span>
+                    <StyledQuantitySpan>{followers}</StyledQuantitySpan>
+                </StyledStatsItem>
+                <StyledStatsItem>
+                    <span>Views</span>
+                    <StyledQuantitySpan>{views}</StyledQuantitySpan>
+                </StyledStatsItem>
+                <StyledStatsItem>
+                    <span>Likes</span>
+                    <StyledQuantitySpan>{likes}</StyledQuantitySpan>
+                </StyledStatsItem>
+            </StyledStatsList>
+        </StyledProfileDiv>
     );
 }
 
